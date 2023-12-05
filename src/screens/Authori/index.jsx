@@ -14,7 +14,7 @@ const Author = () => {
 
   return (
     <div>
-      {token ? <Dashboard /> : <Register />}
+      {token ? <Dashboard /> : <Login />}
     </div>
   );
 };

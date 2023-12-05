@@ -57,6 +57,14 @@ a {
   justify-content: end;
 }
 
+.flex-space-between{
+  justify-content: space-between;
+}
+
+.align-item-center{
+  align-items: center;
+}
+
 .m-b-20{
   margin-bottom: 20px;
 }

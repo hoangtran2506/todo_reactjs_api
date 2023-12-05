@@ -57,19 +57,12 @@ const Login = () => {
 
   return (
     <div style={{}}>
-      <div className='flex flex-end m-b-20'>
-        <NavLink
-          to='/register'
-          className={({ isActive, isPending }) =>
-            isPending ? 'pending' : isActive ? 'active' : ''
-          }
-        >
-          Register
-        </NavLink>
+      <div className='flex m-b-20'>
+        <h3>Login</h3>
       </div>
       <Form onSubmit={handleSubmit}>
         <Row className='mb-3'>
-          <Form.Group controlId='formGridEmail'>
+          <Form.Group className='mb-3' controlId='formGridEmail'>
             <Form.Label>Email</Form.Label>
             <Form.Control
               type='email'
@@ -87,10 +80,21 @@ const Login = () => {
             />
           </Form.Group>
         </Row>
-
-        <Button variant='primary' type='submit'>
-          Submit
-        </Button>
+        <div className='flex align-item-center flex-space-between'>
+          <Button variant='primary' type='submit'>
+            Log in
+          </Button>
+          <p className='flex align-item-center' style={{ margin: 0 }}>
+            <NavLink
+              to='/register'
+              className={({ isActive, isPending }) =>
+                isPending ? 'pending' : isActive ? 'active' : ''
+              }
+            >
+              Register
+            </NavLink>
+          </p>
+        </div>
       </Form>
       {contentAlert && (
         <Alert variant={'danger'} id='alert'>

@@ -48,18 +48,24 @@ const ListTodo = () => {
 
   return (
     <div className='todo_container'>
+      
       {contentAlert && (
         <Alert variant={'success'} id='alert'>
           {contentAlert}
         </Alert>
       )}
 
-      <div className='flex flex-end m-b-20'>
+      <div className='flex flex-space-between m-b-10'>
+      <div className='flex m-b-20'>
+        <h3>Todo list</h3>
+      </div>
         <span className='pointer' onClick={logoutHandle}>
           Logout
         </span>
       </div>
       <AddForm />
+
+      <div className='todo-list_container'>
 
       {todosArr.map((todo) => (
         <Item
@@ -69,6 +75,7 @@ const ListTodo = () => {
           setContentAlert={setContentAlert}
         />
       ))}
+      </div>
     </div>
   );
 };

@@ -13,9 +13,9 @@ const Register = () => {
   const [contentAlert, setContentAlert] = useState('');
 
   const [formValue, setFormValue] = useState({
-    name: 'test',
-    email: 'test@gmail.com',
-    password: 'test',
+    name: '',
+    email: '',
+    password: '',
   });
 
   const handleChange = (key, value) => {
@@ -57,15 +57,8 @@ const Register = () => {
 
   return (
     <div style={{}}>
-      <div className='flex flex-end m-b-20'>
-        <NavLink
-          to='/login'
-          className={({ isActive, isPending }) =>
-            isPending ? 'pending' : isActive ? 'active' : ''
-          }
-        >
-          Login
-        </NavLink>
+      <div className='flex m-b-20'>
+        <h3>Sign up</h3>
       </div>
 
       <Form onSubmit={handleSubmit}>
@@ -78,7 +71,7 @@ const Register = () => {
             />
           </Form.Group>
 
-          <Form.Group controlId='formGridEmail'>
+          <Form.Group className='mb-3' controlId='formGridEmail'>
             <Form.Label>Email</Form.Label>
             <Form.Control
               type='email'
@@ -97,9 +90,21 @@ const Register = () => {
           </Form.Group>
         </Row>
 
-        <Button variant='primary' type='submit'>
-          Submit
-        </Button>
+        <div className='flex align-item-center flex-space-between'>
+          <Button variant='primary' type='submit'>
+            Sign up
+          </Button>
+          <p className='flex align-item-center' style={{ margin: 0 }}>
+            <NavLink
+              to='/login'
+              className={({ isActive, isPending }) =>
+                isPending ? 'pending' : isActive ? 'active' : ''
+              }
+            >
+              Login
+            </NavLink>
+          </p>
+        </div>
       </Form>
       {contentAlert && (
         <Alert variant={'danger'} id='alert'>

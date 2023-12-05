@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { Button, ButtonGroup, Form, InputGroup } from 'react-bootstrap';
 import { TodoContext } from '../../hooks/useContext';
 import { ACTIONS_TODO } from '../../hooks/useTodo';
@@ -14,6 +14,7 @@ const Item = ({ id, todo, setContentAlert }) => {
   const [isDisabled, setIsDisabled] = useState(true);
   const [newTitle, setNewTitle] = useState();
   const handleEdit = async () => {
+
     isDisabled && setIsDisabled(false);
     if (!isDisabled && newTitle) {
       const newTodos = todos;
@@ -53,20 +54,28 @@ const Item = ({ id, todo, setContentAlert }) => {
 
   return (
     <div className='m-b-10'>
+      <form>
+
       <InputGroup>
         <Form.Control
           placeholder="Recipient's username"
           aria-label="Recipient's username with two button addons"
           value={newTitle}
           disabled={isDisabled}
-          onChange={changeHandle}
+            onChange={changeHandle}
+            autoFocus={true}
         />
 
         <Button variant='success' onClick={handleEdit}>
-          <FontAwesomeIcon icon='fas fa-edit' style={{ color: '#ffffff' }} />
+          {
+            isDisabled ? 
+          <FontAwesomeIcon icon='fas fa-edit' style={{ color: '#ffffff' }} /> :
+          <FontAwesomeIcon icon="fas fa-floppy-disk" />
+          }
         </Button>
         <DeleteItem id={id} setContentAlert={setContentAlert} />
       </InputGroup>
+      </form>
     </div>
   );
 };
