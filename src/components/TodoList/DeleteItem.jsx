@@ -7,14 +7,10 @@ import { ACTIONS_TODO } from '../../hooks/useTodo';
 
 const DeleteItem = ({ id, setContentAlert }) => {
   const [showDelete, setShowDelete] = useState(false);
-  const {
-    state: { todos },
-    dispatch,
-  } = useContext(TodoContext);
+  const { dispatch } = useContext(TodoContext);
 
   const handleRemove = async (e) => {
     e.stopPropagation();
-    const newTodos = todos;
     const res = await removeTodo({ id: id });
     if (!res.status) {
       setContentAlert(res.errors[0]);
@@ -22,10 +18,9 @@ const DeleteItem = ({ id, setContentAlert }) => {
     }
     setContentAlert('Remove item success!!');
 
-    delete newTodos[id];
     dispatch({
       type: ACTIONS_TODO.REMOVE_TODO_ITEM,
-      payload: newTodos,
+      payload: id,
     });
   };
 
@@ -34,11 +29,13 @@ const DeleteItem = ({ id, setContentAlert }) => {
   };
 
   return (
-    <Button variant='danger' onClick={handleShowDelete}>
-      <FontAwesomeIcon
-        icon='fa-solid fa-trash-can'
-        style={{ color: '#ffffff' }}
-      />
+    <div>
+      <Button className='btn-delete' variant='danger' onClick={handleShowDelete}>
+        <FontAwesomeIcon
+          icon='fa-solid fa-trash-can'
+          style={{ color: '#ffffff' }}
+        />
+      </Button>
       {showDelete && (
         <div className='confirm_delete'>
           <div className='confirm_delete_container p-10'>
@@ -52,7 +49,7 @@ const DeleteItem = ({ id, setContentAlert }) => {
           </div>
         </div>
       )}
-    </Button>
+    </div>
   );
 };
 

@@ -84,7 +84,7 @@ a {
 }
 
 .confirm_delete{
-  position: absolute;
+  position: fixed;
     border: 1px solid #dee2e6;
     z-index: 999;
     width: max-content;
@@ -103,4 +103,10 @@ body{
   background-image: url('../public/images/background.jpg');
   background-repeat: repeat;
     background-size: contain;
+}
+
+.btn-delete {
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+
 }

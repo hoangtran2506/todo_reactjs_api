@@ -14,7 +14,6 @@ export const ACTIONS_AUTHOR = {
 export const appReducer = (state, action) => {
   switch (action.type) {
     case ACTIONS_AUTHOR.AUTHOR: {
-
       return {
         ...state,
         user: action.payload

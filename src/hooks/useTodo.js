@@ -42,13 +42,16 @@ export const todoReducer = (state, action) => {
         ...state,
         todos: action.payload,
       };
-    case ACTIONS_TODO.REMOVE_TODO_ITEM:
+    case ACTIONS_TODO.REMOVE_TODO_ITEM: {
+      const newTodosObj = state.todos;
+      delete newTodosObj[action.payload];
+      
       return {
         ...state,
-        todos: {
-          ...action.payload,
-        },
+        todos: newTodosObj,
+        todosArr: state.todosArr.filter(value => value.id !== action.payload)
       };
+    }
 
     default:
       return state;
