@@ -35,7 +35,7 @@ const Dashboard = ({}) => {
       };
       getUser();
     } else {
-      navigate('/login');
+      navigate('/register');
     }
   }, []);
 

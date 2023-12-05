@@ -11,7 +11,7 @@ import { getAllTodo } from '../../utils/apiHandle';
 
 const ListTodo = () => {
   const {
-    state: { todos },
+    state: { todosArr },
     dispatch,
   } = useContext(TodoContext);
   const { state: { user } } = useContext(AppContext);
@@ -39,16 +39,15 @@ const ListTodo = () => {
     const getTodos =  () => {
       dispatch({
         type: ACTIONS_TODO.INIT,
-        payload: user.books
+        payload: user.books.reverse()
       })
     }
 
     user && user.books && getTodos();
   }, [dispatch, user])
 
-
   return (
-    <div>
+    <div className='todo_container'>
       {contentAlert && (
         <Alert variant={'success'} id='alert'>
           {contentAlert}
@@ -62,11 +61,11 @@ const ListTodo = () => {
       </div>
       <AddForm />
 
-      {Object.entries(todos).map(([key, todo]) => (
+      {todosArr.map((todo) => (
         <Item
-          key={key}
+          key={todo.id}
           todo={todo}
-          id={key}
+          id={todo.id}
           setContentAlert={setContentAlert}
         />
       ))}
