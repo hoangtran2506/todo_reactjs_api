@@ -39,7 +39,7 @@ const Item = ({ id, todo, setContentAlert }) => {
         type: ACTIONS_TODO.EDIT_ITEM,
         payload: newTodos,
       });
-      setContentAlert('Add item success!!');
+      setContentAlert('Edit item success!!');
       setIsDisabled(true);
     }
   };

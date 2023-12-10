@@ -18,7 +18,7 @@ export const todoReducer = (state, action) => {
   switch (action.type) {
     case ACTIONS_TODO.INIT: {
       const todoObj = action.payload.reduce((result, value) => {
-        result = { [value.id]: value, ...result}
+        Object.assign(result, {[value.id]: value})
         return result;
       }, {});
       return {
@@ -27,12 +27,12 @@ export const todoReducer = (state, action) => {
         todos: todoObj,
       };
     }
-    case ACTIONS_TODO.ADD_ITEM:
+    case ACTIONS_TODO.ADD_ITEM: 
       return {
         ...state,
         todos: {
-          [action.payload.id]: action.payload,
           ...state.todos,
+          [action.payload.id]: action.payload,
         },
 
         todosArr: [ action.payload, ...state.todosArr ],
